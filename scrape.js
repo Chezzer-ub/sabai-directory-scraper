@@ -21,13 +21,10 @@ axios.get(url+"/sabai/directory?zoom=15&is_mile=0&directory_radius=0&hide_search
     var $ = cheerio.load(data.data);
     $(".sabai-entity").each((i, item) => {
         $ = cheerio.load(item);
-        let data = [];
-        $(".sabai-entity-type-content").text().split("\n").forEach((item,i) => {
-            let t = parseText(item);
-            if (t !== "" && t !== null) {
-                data.push(t)
-            }
-        })
+        let data = {
+            name: parseText($(".sabai-directory-title a").text()),
+            category: parseText($(".sabai-entity-bundle-type-directory-category").text())
+        }
         list.push(data);
     })
     fs.writeFileSync("directory.json", JSON.stringify(list));
