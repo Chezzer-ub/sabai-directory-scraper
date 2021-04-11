@@ -23,7 +23,13 @@ axios.get(url+"/sabai/directory?zoom=15&is_mile=0&directory_radius=0&hide_search
         $ = cheerio.load(item);
         let data = {
             name: parseText($(".sabai-directory-title a").text()),
-            category: parseText($(".sabai-entity-bundle-type-directory-category").text())
+            category: parseText($(".sabai-entity-bundle-type-directory-category").text()),
+            image: parseText($(".sabai-directory-photos img").attr("src")),
+            location: parseText($(".sabai-directory-location").text()),
+            tel: parseText($(".sabai-directory-contact-tel a").text()),
+            mobile: parseText($(".sabai-directory-contact-mobile a").text()),
+            email: parseText($(".sabai-directory-contact-email").text()),
+            website: parseText($(".sabai-directory-contact-website").text())
         }
         list.push(data);
     })
