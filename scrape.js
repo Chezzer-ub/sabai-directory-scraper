@@ -1,9 +1,8 @@
-var url = "https://tehumeka.co.nz";
-
 var cheerio = require("cheerio");
 var axios = require("axios");
 var he = require("he");
 var fs = require("fs");
+var url = process.argv[2];
 function parseText(text) {
     //take &amp and things like that out of a text.
     if (text) {
