@@ -11,7 +11,7 @@ function parseText(text) {
         text = he.unescape(text);
         return text;
     } else {
-        return null;
+        return "";
     }
 }
     
